@@ -1,0 +1,44 @@
+<!-- {% extends 'admin_base.html' %}
+
+{% block template %} -->
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<body>
+    {% include 'admin_base.html' %}
+    <div class="employee_tab">
+    
+        <table id="employees" border="1">
+            <thead>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Mobile Number</th>
+                <th>Position</th>
+                
+                <th colspan="2" id="mid">Action</th>
+            </thead>
+            {% for x in employee_list %}
+            <tr>
+                <td>{{x.empCode}}</td>
+                <td>{{x.fullName}}</td>
+                <td>{{x.mobileNumber}}</td>
+                <td>{{x.position}}</td>
+               
+               
+                <td>
+                    <a href="{% url 'employee_delete' x.empCode %}"><button id="del" onclick="return confirm ('Are You sure?')">delete</button></a>
+                    
+                </td>
+            </tr>
+            {% endfor %}
+            </table>
+            <br><br>
+            <a href="{% url 'employee_add' %}"><button id="add">Add Employee</button></a>
+</body>
+
+
+
+
+
+<!-- {% endblock %} -->

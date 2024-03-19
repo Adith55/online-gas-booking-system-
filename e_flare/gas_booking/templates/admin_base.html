@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            
+            
+        }
+        h2{
+            color: #e74c3c ;
+            margin: 0;
+            margin-left: 10px;
+            
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            margin-left: 10px;
+            
+        }
+
+        li {
+            margin-bottom: 40px;
+            margin-top: 20px;
+        }
+        a{
+            text-decoration: none;
+            color: #339933;
+        }
+        a:hover{
+            color:#FFA500 ;
+        }
+        .leftcontainer{
+            float: left;
+            width: 18%;
+            height: 100vh;
+
+            background: #161616;
+        }
+        
+    </style>
+</head>
+<body>
+
+    
+    <div class="leftcontainer">
+        <h2>ADMIN DASHBOARD</h2>
+        <hr>
+        <ul>
+            <li><a href="{% url 'admin_users' %}" class="btn">USERS</a></li> 
+            <li><a href="{% url 'bookings' %}" class="btn">BOOKINGS</a></li>
+            <li><a href="{% url 'employee_list' %}" class="btn">EMPLOYEES</a></li>
+            <li><a href="{% url 'logout' %}" class="btn">LOGOUT</a></li>
+        </ul>
+        
+    </div>
+    
+</body>
+</html>
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {% block template %}
+
+    {% endblock %}

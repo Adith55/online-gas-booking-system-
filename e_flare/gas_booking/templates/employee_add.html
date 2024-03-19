@@ -1,0 +1,14 @@
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<body>
+    {% include 'admin_base.html' %}
+<div class="container1">
+<h1>Add Employee</h1>
+<form action="{% url 'employee_add' %}" method="post" autocomplete="off">
+    {% csrf_token %}
+{{form}}
+<button type="submit" id="new">SUBMIT</button>
+</form>
+</div>
+</body>

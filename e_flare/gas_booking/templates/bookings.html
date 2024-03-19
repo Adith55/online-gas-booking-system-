@@ -1,0 +1,28 @@
+
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<body>
+    {% include 'admin_base.html' %}
+{% for booking in bookings %}
+<div class="bookings">
+
+<p>Name:{{booking.customerName}} ,
+Contact No:{{booking.contactNumber}} ,
+Address:{{booking.deliveryAddress}} ,
+Cylinder Type:{{booking.cylinderType}},
+Quantity:{{booking.quantity}} </p>
+
+<a href="{% url 'approve' booking.contactNumber %}" ><button id="approve">APPROVE</button></a>
+<a href="{% url 'reject' booking.contactNumber %}"><button id="reject">REJECT</button></a>
+<hr>
+
+</div>
+
+
+
+
+{% endfor %}
+</body>
+

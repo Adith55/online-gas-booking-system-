@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block template %}
+<style>
+ header {
+            background-color:#FFA500;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+.card {
+  
+margin-left: 20px;
+}
+
+</style>
+
+
+
+<header>
+    <h2>Booking History</h2>
+</header>
+<div class="card">
+
+{% for booking in bookings %}
+<p>Name:{{booking.customerName}} </p>
+<p>Contact No:{{booking.contactNumber}} </p>
+<p>Address:{{booking.deliveryAddress}} </p>
+<p>Cylinder Type:{{booking.cylinderType}} </p>
+<p>Quantity:{{booking.quantity}} </p>
+<hr>
+
+{% endfor %}
+</div>
+
+{% endblock %}

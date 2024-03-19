@@ -1,0 +1,27 @@
+<!-- {% extends 'admin_base.html' %}
+
+{% block template %} -->
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<body>
+    {% include 'admin_base.html' %}
+    <div class="container1">
+        <h1>Add admin</h1>
+        <form action="{% url 'admin_adduser' %}" method="post">
+            {% csrf_token %}
+            <input type="number" placeholder="Id" name="id"><br>
+            <input type="text" placeholder="Name" name="logname"><br>
+            <input type="text" placeholder="Email" name="logemail"><br>
+            <input type="password" placeholder="Password" name="logpass"><br>
+            <label for="role" name="logrole" type="text">Role:</label>
+            <select id="role" name="role">
+                <option value="admin" >Admin</option>
+                <option value="customer" >Customer</option>
+            </select><br>
+            <button type="submit" id="new">SUBMIT</button>
+
+        </form>
+    </div>
+</body>
+
+{% endblock %}

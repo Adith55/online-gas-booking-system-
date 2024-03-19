@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block template %}
+    
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color:#FFA500;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        section {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            /* margin-left: 5; */
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
+<body>
+
+    <header>
+        <h2>Book Cylinder</h2>
+    </header>
+
+    <section>
+        <form action="" method="post">
+            {% csrf_token %}
+            <label for="customerName">Customer Name:</label>
+            <input type="text" id="customerName" name="customerName" required>
+
+            <label for="contactNumber">Contact Number:</label>
+            <input type="number" id="contactNumber" name="contactNumber" >
+
+            <label for="deliveryAddress">Delivery Address:</label>
+            <textarea id="deliveryAddress" name="deliveryAddress" rows="4" required></textarea>
+
+            <label for="cylinderType">Cylinder Type:</label>
+            <select id="cylinderType" name="cylinderType" required>
+                <option value="domestic">Domestic</option>
+                <option value="commercial">Commercial</option>
+            </select>
+
+            <label for="quantity">Quantity:</label>
+            <select id="quantity" name="quantity" onchange="calculatePrice()">
+                <option value="0">Select</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                
+            </select>
+            <p id="price">Price: &#8377;0</p>
+
+    <script>
+        function calculatePrice() {
+            var quantity = parseInt(document.getElementById("quantity").value);
+            var priceElement = document.getElementById("price");
+            var price;
+
+            if (quantity === 1) {
+                price = 700;
+            } else if (quantity === 2) {
+                price = 1400;
+            } else if (quantity > 2 && quantity <= 5) {
+                price = 700 * quantity;
+            } else {
+                alert("Maximum limit exceeds! Please select up to 5 quantities.");
+                document.getElementById("quantity").value = 0;
+                return;
+            }
+
+            priceElement.textContent = "Price: " + price ;
+        }
+    </script>
+
+
+            <button type="submit">Book Now</button>
+        </form>
+    </section>
+
+</body>
+
+{% endblock %}
